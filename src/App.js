@@ -18,14 +18,14 @@ const API_KEY = "40edf2dd1e5c482285a21549181404";
    getWeather = async (e) => {
       e.preventDefault();
       const city = e.target.elements.city.value;
-      const country = e.target.elements.country.value;
+      const country = e.target.elements.state.value;
       const api_call = await fetch(`http://api.apixu.com/v1/current.json?key=${API_KEY}&q=${city},${country}`);
       const data = await api_call.json();      
       if(city && country){     
         this.setState({
           temperature: data.current.temp_f,
           city: data.location.name,
-          country: data.location.country,
+          state: data.location.country,
           condition: data.current.condition.text,
           humidity: data.current.humidity,
           error: ""
@@ -34,7 +34,7 @@ const API_KEY = "40edf2dd1e5c482285a21549181404";
         this.setState({
           temperature: undefined,
           city: undefined,
-          country: undefined,
+          state: undefined,
           condition: undefined,
           humidity: undefined,
           error: "Please enter a city and country"
@@ -56,7 +56,7 @@ const API_KEY = "40edf2dd1e5c482285a21549181404";
                 <Weather 
                   temperature={this.state.temperature}
                   city={this.state.city}
-                  country={this.state.country}
+                  state={this.state.state}
                   condition={this.state.condition}
                   humidity={this.state.humidity}
                   error={this.state.error}
