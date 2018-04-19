@@ -19,7 +19,7 @@ const API_KEY = "40edf2dd1e5c482285a21549181404";
       e.preventDefault();
       const city = e.target.elements.city.value;
       const country = e.target.elements.state.value;
-      const api_call = await fetch(`http://api.apixu.com/v1/current.json?key=${API_KEY}&q=${city},${country}`);
+      const api_call = await fetch(`https://api.apixu.com/v1/current.json?key=${API_KEY}&q=${city},${country}`);
       const data = await api_call.json();      
       if(city && country){     
         this.setState({
